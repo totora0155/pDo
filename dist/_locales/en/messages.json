@@ -1,0 +1,32 @@
+{
+  "appName": {
+    "message": "pDo",
+    "description": "Application name that is displayed in the Web Store"
+  },
+  "appDesc": {
+    "message": "Over immediately for the time being, task management simple number of days elapsed is displayed",
+    "description": "Detailed description of the application that is displayed in the Web Store"
+  },
+  "zeroTask": {
+    "message": "Welcome to </ span> <span class = 'task-title'> pDo! <br> task (draw a line) complete click. Completed tasks will be erased automatically when you start next time! The <br> input area already focused, immediately add Let's (Enter) the task.",
+    "description": "When the task 0, the message that is displayed"
+  },
+  "today": {
+    "message": "Today",
+    "description": "Tasks that you write today"
+  },
+  "yesterday": {
+    "message": "Yesterday",
+    "description": "Task that was described yesterday"
+  },
+  "daysAgo": {
+    "message": "$day$ days ago",
+    "description": "I show the number of days before or filled out the task",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  }
+}

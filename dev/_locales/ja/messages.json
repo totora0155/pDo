@@ -1,0 +1,32 @@
+{
+  "appName": {
+    "message": "pDo",
+    "description": "ウェブストアで表示されるアプリ名"
+  },
+  "appDesc": {
+    "message": "とりあえず直ぐ書けて、経過日数が表示されるシンプルなタスク管理",
+    "description": "ウェブストアで表示されるアプリの詳細説明"
+  },
+  "zeroTask": {
+    "message": "<span class='task-title'>pDo</span>へようこそ！<br>タスクはクリックで完了（線を引く）。完了タスクは次回起動時に自動的に消去されます！<br>入力エリアにはフォーカス済み、さっそくタスクを追加（Enter）してみよう。",
+    "description": "タスク０の時、表示されるメッセージ"
+  },
+  "today": {
+    "message": "今日",
+    "description": "今日記述したタスク"
+  },
+  "yesterday": {
+    "message": "昨日",
+    "description": "昨日記述したタスク"
+  },
+  "daysAgo": {
+    "message": "$day$日前",
+    "description": "何日前にタスクを記入したかを示す",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  }
+}

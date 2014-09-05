@@ -1,0 +1,235 @@
+@charset "utf-8"
+
+$lfont: rgba(0,0,0,.35)
+$font: #2b2b2b
+$bg: #f9f9f9
+$dbg: darken($bg, 3)
+$acc: #69b076
+
+@font-face
+  font-family: 'knubi'
+  src: url('font/knubi.woff') format('woff')
+
+=kf($name)
+  @-webkit-keyframes #{$name}
+    @content
+
+  @keyframes #{$name}
+    @content
+
+=anime($prop)
+  -webkit-animation: #{$prop}
+  animation: #{$prop}
+  -webkit-animation-fill-mode: both !important
+  animation-fill-mode: both !important
+
++kf(add)
+  0%
+    background: $acc
+    color: transparent
+
+  15%
+    background: rgba($acc, .5)
+
+  40%
+    background: rgba($acc, .15)
+    opacity: 0
+    color: transparent
+
+  100%
+    background: rgba($acc, 0)
+    opacity: 1
+    color: $font
+
++kf(cancel)
+  40%
+    color: $lfont
+    transform: scale(.75)
+
+  75%
+    color: $lfont
+    transform: scale(.85)
+
+  100%
+    color: $font
+    transform: scale(1)
+
++kf(line-through)
+  60%
+    width: 0
+
+  80%
+    width: 70%
+
+  100%
+    width: 100%
+
++kf(line-through-reverse)
+  0%
+    width: 100%
+
+  20%
+    width: 30%
+
+  40%
+    width: 0%
+
++kf(computed-task)
+  0%
+    transform: scale(1)
+
+  20%
+    transform: scale(.85)
+
+  35%
+    transform: scale(.75)
+
+  60%
+    color: $font
+
+  100%
+    color: $lfont
+
+.init
+  font: 18px/ 1.5 "Lucida Grande", "segoe UI", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Meiryo, Verdana, Arial, sans-serif
+  margin: 0
+  color: $font
+  background: $bg
+  letter-spacing: 1px
+
+.controller
+  height: calc(77.5vh + 3px)
+  overflow-y: auto
+  // box-sizing: border-box
+  // border-bottom: 8px solid $acc
+
+.header
+  text-align: center
+  font-family: 'knubi'
+  background: $acc
+  // box-sizing: border-box
+  height: 5vh
+  color: mix($acc, #fff, 30)
+  padding: .55em 0
+  border-bottom: 2px solid rgb(144, 202, 133)
+
+.task-
+  &init
+    color: rgba($font, .75)
+  &title
+    font-family: 'knubi'
+    color: $acc
+
+  &list
+    list-style: none
+    padding-left: 0
+    margin: 0
+
+  &case
+    padding: .5em
+    border-bottom: 1px dashed #e3e3e3
+    transition: .3s ease-in
+    position: relative
+
+  &notdone
+    position: relative
+    display: inline-block
+    transform-origin: left
+    white-space: nowrap
+    text-overflow: ellipsis
+    overflow-x: hidden
+    max-width: calc(100% - 3.4em)
+    &:before
+      content: ""
+      // transition: .3s linear
+      position: absolute
+      border-bottom: 4px double $acc
+      // background-image: linear-gradinet(to bottom, transparent 50%, $acc, 51%)
+      top: calc(50% - 4px)
+      height: 4px
+      // width: 0
+
+  &anime-
+    &add
+      +anime(add .5s linear)
+      .task-date
+        transition: 0
+    &cancel
+      background: $bg
+      span
+        transform: scale(.71)
+        +anime(cancel .3s linear)
+        &:before
+          +anime(line-through-reverse .3s linear)
+
+  &space
+    min-height: 46px
+
+  &done
+    background: rgba(mix($bg, $acc, 80), .35)
+    span
+      +anime(computed-task .3s linear)
+      transform: scale(.71)
+      &:before
+        +anime(line-through .3s linear)
+
+    .task-date
+      transition: .1s ease-in
+      opacity: 0
+
+  &date
+    transition: .1s ease-in .2s
+    font-size: 10px
+    display: inline-block
+    padding: .15em 0
+    background: rgba($acc, .35)
+    border: 1px solid $acc
+    border-radius: 3px
+    margin-left: .35em
+    letter-spacing: -.2px
+    position: absolute
+    right: 9px
+    top: 14px
+    min-width: 3.4em
+    text-align: center
+
+.progress-
+  &
+    position: fixed
+    bottom: 10.5vh
+    width: 100%
+    background: #e3e3e3
+
+  &bar
+    transition: .3s ease-in
+    background: $acc
+    height: 2vh
+    width: 0
+
+.add-
+  &
+    width: 100%
+    position: fixed
+    bottom: 0
+    background: #fff
+    padding: .8em .5em
+    box-sizing: border-box
+    height: 10.5vh
+    // border-top: 8px solid $acc
+
+  &input
+    font-size: inherit
+    font-family: inherit
+    border: none
+    outline: none
+    width: 100%
+    letter-spacing: 1px
+    position: absolute
+    top: 0
+    bottom: 0
+    margin: auto
+    height: 1.5em
+
+  // &btn
+  //   font-size: inherit
+  //   border: none
